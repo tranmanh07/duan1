@@ -1,0 +1,108 @@
+/* ============================================
+   KEYFRAME ANIMATIONS
+   ============================================ */
+
+/* Heart beat */
+@keyframes heartBeat {
+  0%, 100% { transform: scale(1); }
+  14%       { transform: scale(1.15); }
+  28%       { transform: scale(1); }
+  42%       { transform: scale(1.1); }
+  70%       { transform: scale(1); }
+}
+
+/* Glow pulse */
+@keyframes glowPulse {
+  0%, 100% { opacity: 0.6; transform: scale(1); }
+  50%       { opacity: 1;   transform: scale(1.15); }
+}
+
+/* Sparkle rotate */
+@keyframes sparkleRotate {
+  0%   { transform: rotate(0deg) scale(1); }
+  50%  { transform: rotate(180deg) scale(1.2); }
+  100% { transform: rotate(360deg) scale(1); }
+}
+
+/* Particle floating up */
+@keyframes particleFloat {
+  0%   { transform: translateY(0) rotate(0deg);   opacity: 0; }
+  10%  { opacity: 0.8; }
+  90%  { opacity: 0.6; }
+  100% { transform: translateY(-110vh) rotate(720deg); opacity: 0; }
+}
+
+/* Loading spin */
+@keyframes loadingSpin {
+  0%   { transform: scale(1) rotate(0deg); }
+  50%  { transform: scale(1.3) rotate(180deg); }
+  100% { transform: scale(1) rotate(360deg); }
+}
+
+/* Badge appear */
+@keyframes badgeAppear {
+  from { opacity: 0; transform: translateX(-50%) translateY(-8px); }
+  to   { opacity: 1; transform: translateX(-50%) translateY(0); }
+}
+
+/* Hand wave hint */
+@keyframes handWave {
+  0%, 100% { transform: rotate(0deg); }
+  20%       { transform: rotate(20deg); }
+  40%       { transform: rotate(-10deg); }
+  60%       { transform: rotate(15deg); }
+  80%       { transform: rotate(-5deg); }
+}
+
+/* Message line pop-in */
+@keyframes msgFadeIn {
+  from { opacity: 0; transform: translateY(12px); filter: blur(4px); }
+  to   { opacity: 1; transform: translateY(0);    filter: blur(0px); }
+}
+
+/* Canvas overlay bloom */
+@keyframes bloom {
+  0%   { transform: scale(0) rotate(0deg);   opacity: 0; }
+  60%  { transform: scale(1.1) rotate(10deg); opacity: 1; }
+  100% { transform: scale(1) rotate(0deg);   opacity: 1; }
+}
+
+/* Love icon swap */
+@keyframes iconSwap {
+  0%   { transform: scale(1);   opacity: 1; }
+  40%  { transform: scale(1.4); opacity: 0; }
+  60%  { transform: scale(0.6); opacity: 0; }
+  100% { transform: scale(1);   opacity: 1; }
+}
+
+/* Guide item highlight flash */
+@keyframes guideFlash {
+  0%, 100% { box-shadow: none; }
+  50%       { box-shadow: 0 0 18px rgba(244, 63, 94, 0.5); }
+}
+
+/* Shimmer effect for message box */
+@keyframes shimmer {
+  0%   { background-position: -200% 0; }
+  100% { background-position:  200% 0; }
+}
+
+/* Typewriter cursor blink */
+@keyframes cursorBlink {
+  0%, 100% { opacity: 1; }
+  50%       { opacity: 0; }
+}
+
+/* Floating shake for big icons */
+@keyframes floatShake {
+  0%, 100% { transform: translateY(0px) rotate(0deg); }
+  33%       { transform: translateY(-6px) rotate(-3deg); }
+  66%       { transform: translateY(-3px) rotate(3deg); }
+}
+
+/* Canvas element tween for AR overlays */
+@keyframes arPop {
+  0%   { opacity: 0; }
+  100% { opacity: 1; }
+}
+

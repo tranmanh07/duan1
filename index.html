@@ -1,0 +1,157 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>💕 Dự Án Tình Yêu</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Dancing+Script:wght@400;600;700&family=Playfair+Display:ital,wght@0,400;1,400&family=Be+Vietnam+Pro:wght@300;400;600&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="css/style.css" />
+  <link rel="stylesheet" href="css/animations.css" />
+</head>
+<body>
+
+  <!-- ░░░ PARTICLES BACKGROUND ░░░ -->
+  <div id="particles-container" aria-hidden="true"></div>
+
+  <!-- ░░░ SPLASH SCREEN ░░░ -->
+  <div id="splash-screen">
+    <div class="splash-glow"></div>
+    <div class="splash-content">
+      <div class="splash-heart-ring">💕</div>
+      <h1 class="splash-title">Tình Yêu</h1>
+      <p class="splash-subtitle">
+        Hãy để bàn tay em nói lên điều<br />mà trái tim anh muốn nói...
+      </p>
+      <button id="start-btn" class="start-button">
+        <span class="btn-sparkle">✨</span>
+        <span class="btn-text">Bắt Đầu</span>
+        <span class="btn-sparkle">✨</span>
+      </button>
+      <p class="splash-hint">* Cần quyền truy cập camera</p>
+    </div>
+  </div>
+
+  <!-- ░░░ MAIN APP ░░░ -->
+  <div id="main-container" class="hidden">
+    <div id="app-layout">
+
+      <!-- ======= Camera / AR Section ======= -->
+      <div id="camera-section">
+
+        <!-- Top Bar -->
+        <div id="top-bar">
+          <span class="top-brand">💕 Tình Yêu</span>
+          <div id="top-controls">
+            <button id="audio-btn" class="ctrl-btn" title="Bật/tắt nhạc">🔇</button>
+          </div>
+        </div>
+
+        <div id="camera-wrapper">
+          <video id="video" autoplay muted playsinline></video>
+          <canvas id="ar-canvas"></canvas>
+
+          <!-- Gesture Badge -->
+          <div id="gesture-badge" class="hidden">
+            <span id="gesture-emoji"></span>
+            <span id="gesture-name-text">-</span>
+          </div>
+
+          <!-- No Hand Hint -->
+          <div id="no-hand-hint">
+            <span>👋</span>
+            <p>Giơ tay vào camera nhé!</p>
+          </div>
+        </div>
+      </div>
+
+      <!-- ======= Love Panel ======= -->
+      <div id="love-panel">
+
+        <div id="love-header">
+          <span class="header-heart">❤️</span>
+          <h2 class="love-title">Lời Tình</h2>
+          <span class="header-heart">❤️</span>
+        </div>
+
+        <!-- Love Meter -->
+        <div id="love-meter-wrapper">
+          <span class="meter-label">💝 Độ Tình Yêu</span>
+          <div id="love-meter-bar">
+            <div id="love-meter-fill"></div>
+            <span id="love-meter-pct">0%</span>
+          </div>
+          <div id="love-meter-emoji">💕</div>
+        </div>
+
+        <!-- Message Box -->
+        <div id="love-message-box">
+          <div id="love-icon-display">💕</div>
+          <div id="love-message-text">
+            <p class="msg-line" id="msg-1"></p>
+            <p class="msg-line" id="msg-2"></p>
+            <p class="msg-line" id="msg-3"></p>
+          </div>
+        </div>
+
+        <!-- Gesture Guide -->
+        <div id="gesture-guide">
+          <p class="guide-title">✨ Thử các cử chỉ này ✨</p>
+          <div class="guide-grid">
+            <div class="guide-item" data-gesture="open_hand">
+              <span class="g-emoji">🖐️</span>
+              <span class="g-label">Mở tay</span>
+            </div>
+            <div class="guide-item" data-gesture="peace">
+              <span class="g-emoji">✌️</span>
+              <span class="g-label">Chữ V</span>
+            </div>
+            <div class="guide-item" data-gesture="thumbs_up">
+              <span class="g-emoji">👍</span>
+              <span class="g-label">Like</span>
+            </div>
+            <div class="guide-item" data-gesture="pinky">
+              <span class="g-emoji">🤙</span>
+              <span class="g-label">Ngón út</span>
+            </div>
+            <div class="guide-item" data-gesture="fist">
+              <span class="g-emoji">✊</span>
+              <span class="g-label">Nắm đấm</span>
+            </div>
+          </div>
+        </div>
+
+      </div><!-- /#love-panel -->
+    </div><!-- /#app-layout -->
+  </div><!-- /#main-container -->
+
+  <!-- ░░░ LOVE FULL OVERLAY ░░░ -->
+  <div id="love-full-overlay" class="hidden">
+    <div class="love-full-content">
+      <p>❤️‍🔥 Tình Yêu Đã Đầy! ❤️‍🔥</p>
+    </div>
+  </div>
+
+  <!-- ░░░ LOADING ░░░ -->
+  <div id="loading-overlay" class="hidden">
+    <div class="loading-content">
+      <div class="loading-spinner">💕</div>
+      <p>Đang khởi động camera...</p>
+    </div>
+  </div>
+
+  <!-- ░░░ MediaPipe CDN ░░░ -->
+  <script src="https://cdn.jsdelivr.net/npm/@mediapipe/camera_utils/camera_utils.js" crossorigin="anonymous"></script>
+  <script src="https://cdn.jsdelivr.net/npm/@mediapipe/drawing_utils/drawing_utils.js" crossorigin="anonymous"></script>
+  <script src="https://cdn.jsdelivr.net/npm/@mediapipe/hands/hands.js" crossorigin="anonymous"></script>
+
+  <!-- ░░░ App Scripts ░░░ -->
+  <script src="js/love-messages.js"></script>
+  <script src="js/particles.js"></script>
+  <script src="js/gesture.js"></script>
+  <script src="js/canvas-overlay.js"></script>
+  <script src="js/audio.js"></script>
+  <script src="js/app.js"></script>
+</body>
+</html>
